@@ -304,14 +304,18 @@ flowchart LR
       <h2>Active vs. Inactive</h2>
       <p>The <strong>active/inactive flag</strong> now decides whether a record counts — not whether it exists. Since everything comes in from rostering, flipping records is a core part of the job, and we've made it easy.</p>
       <ul class="clean">
-        <li>Works across <strong>all layers</strong>: district, school, group, student.</li>
+        <li>Works across <strong>all layers</strong>: district, school, group, faculty, student.</li>
         <li><strong>Deactivating cascades down.</strong> Turn off a district and everything inside it — schools, groups, faculty, students — goes inactive too. Same for a school: its groups and people follow.</li>
-        <li><strong>View both active and inactive</strong> on every layer — inactive isn't hidden.</li>
-        <li><strong>Bulk apply</strong> active/inactive on any layer.</li>
-        <li><strong>This is how you curate:</strong> deactivate faculty or students you shouldn't be using; the record stays for reference but stops counting.</li>
+        <li><strong>Status column</strong> — every layer's table has a <strong>Status</strong> column, so you can read each record's active/inactive state at a glance.</li>
+        <li><strong>Filter by status</strong> — an <strong>All / Active / Inactive</strong> toggle on each layer lets you show everything or narrow to one; inactive isn't hidden.</li>
+        <li><strong>Bulk apply</strong> active/inactive on any layer — select records, then <strong>Activate</strong> or <strong>Deactivate</strong>.</li>
+        <li><strong>This is how you curate:</strong> deactivate groups, faculty or students you shouldn't be using; the record stays for reference but stops counting.</li>
       </ul>
       <div class="rule"><b>Heads up:</b> because deactivation cascades, switching off a district or school takes everything beneath it with it. Deactivate at the layer you actually mean.</div>
-      <div class="shot"><span class="lbl">Screenshot</span>A layer view with active + inactive records and bulk controls</div>
+      <figure class="shot-img">
+        <img src="img-active-inactive.png" alt="A school's Groups table with a Status column showing each group's Active state, an All / Active / Inactive filter above the table, and the Group Action Center's Activate and Deactivate bulk controls." loading="lazy">
+        <figcaption>A layer's table — a Status column per row, an All / Active / Inactive filter, and bulk Activate / Deactivate in the Action Center</figcaption>
+      </figure>
       <h3>Year rollover</h3>
       <p>At the <strong>start of each new school year</strong> this happens <strong>automatically</strong> — you don't run it. CS gets an <strong>email reminder two weeks before</strong>.</p>
       <ul class="clean">
