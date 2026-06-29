@@ -154,55 +154,6 @@
     <h1>Rostering &amp; Account Setup</h1>
     <p class="lede">What changed in the new system and how to run your workflows.</p>
 
-    <!-- THE SHIFT -->
-    <section id="overview">
-      <p class="sec-eyebrow">The shift</p>
-      <p class="thesis">The roster used to decide who's in. Now an <em>active group with a paid product combo</em> decides.</p>
-      <p>Everything on the roster syncs in — people <strong>and</strong> their groups. That's raw data; it doesn't activate anyone on its own. A student goes live only when they're in an <strong>active group with a paid product combo</strong> — the bundle of products the school actually paid for.</p>
-
-      <div class="tablewrap">
-        <table>
-          <thead><tr><th></th><th>Old way</th><th>New way</th></tr></thead>
-          <tbody>
-            <tr><td>The gate</td><td>The roster file</td><td>Active group + paid product combo</td></tr>
-            <tr><td>Who syncs in</td><td>Only those who "passed" the roster gate</td><td>Everyone in the selected courses — people <em>and</em> their groups</td></tr>
-            <tr><td>How you filter</td><td>Filter people out at the roster</td><td>Select courses at sync, activate via groups, deactivate the rest</td></tr>
-            <tr><td>Inactive records</td><td>Hidden / gone</td><td>Visible on every layer, but deactivated for history</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="diagram">
-        <pre class="mermaid">
-flowchart TD
-    A["District sends their courses"] --> B{"Select which<br/>courses sync"}
-    B -->|Selected| C["People AND their groups<br/>sync in from roster"]
-    B -->|Not selected| X["Never enters our system"]
-    C --> D["Confirm the correct groups"]
-    D --> E["Add paid product combo<br/>+ set group ACTIVE"]
-    E --> F["Students go live"]
-    C --> G["Deactivate what you don't need"]
-
-    classDef gate fill:#fdedc7,stroke:#b45309,color:#7a3c08;
-    classDef sync fill:#e0e9ff,stroke:#1d4ed8,color:#163a9e;
-    classDef off fill:#fde2e2,stroke:#b91c1c,color:#8a1414;
-    class B sync;
-    class E gate;
-    class G off;
-
-    click A mmJump
-    click B mmJump
-    click C mmJump
-    click D mmJump
-    click E mmJump
-    click F mmJump
-    click X mmJump
-    click G mmJump
-        </pre>
-      </div>
-      <p class="hint">Tip — click any step in the chart to jump to the part that explains it.</p>
-    </section>
-
     <!-- PART 1 -->
     <section id="part1">
       <p class="sec-eyebrow">Part 1</p>
@@ -329,7 +280,52 @@ flowchart LR
     <!-- PART 5 -->
     <section id="part5">
       <p class="sec-eyebrow">Part 5</p>
-      <h2>Activating students</h2>
+      <h2>Activating students &amp; faculty</h2>
+
+      <p class="thesis">The roster used to decide who's in. Now an <em>active group with a paid product combo</em> decides.</p>
+      <p>Everything on the roster syncs in — people <strong>and</strong> their groups. That's raw data; it doesn't activate anyone on its own. A student goes live only when they're in an <strong>active group with a paid product combo</strong> — the bundle of products the school actually paid for.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th></th><th>Old way</th><th>New way</th></tr></thead>
+          <tbody>
+            <tr><td>The gate</td><td>The roster file</td><td>Active group + paid product combo</td></tr>
+            <tr><td>Who syncs in</td><td>Only those who "passed" the roster gate</td><td>Everyone in the selected courses — people <em>and</em> their groups</td></tr>
+            <tr><td>How you filter</td><td>Filter people out at the roster</td><td>Select courses at sync, activate via groups, deactivate the rest</td></tr>
+            <tr><td>Inactive records</td><td>Hidden / gone</td><td>Visible on every layer, but deactivated for history</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="diagram">
+        <pre class="mermaid">
+flowchart TD
+    A["District sends their courses"] --> B{"Select which<br/>courses sync"}
+    B -->|Selected| C["People AND their groups<br/>sync in from roster"]
+    B -->|Not selected| X["Never enters our system"]
+    C --> D["Confirm the correct groups"]
+    D --> E["Add paid product combo<br/>+ set group ACTIVE"]
+    E --> F["Students go live"]
+    C --> G["Deactivate what you don't need"]
+
+    classDef gate fill:#fdedc7,stroke:#b45309,color:#7a3c08;
+    classDef sync fill:#e0e9ff,stroke:#1d4ed8,color:#163a9e;
+    classDef off fill:#fde2e2,stroke:#b91c1c,color:#8a1414;
+    class B sync;
+    class E gate;
+    class G off;
+
+    click A mmJump
+    click B mmJump
+    click C mmJump
+    click D mmJump
+    click E mmJump
+    click F mmJump
+    click X mmJump
+    click G mmJump
+        </pre>
+      </div>
+      <p class="hint">Tip — click any step in the chart to jump to the part that explains it.</p>
 
       <div class="moves">
         <p class="h">The job, in three moves</p>
