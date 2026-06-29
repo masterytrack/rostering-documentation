@@ -160,7 +160,7 @@
       <h2>Activating students &amp; faculty</h2>
 
       <p class="thesis">The roster used to decide who's in. Now an <em>active group with a paid product combo</em> decides.</p>
-      <p>Everything on the roster syncs in — people <strong>and</strong> their groups. That's raw data; it doesn't activate anyone on its own. A student goes live only when they're in an <strong>active group with a paid product combo</strong> — the bundle of products the school actually paid for.</p>
+      <p>Everything on the roster syncs in — people <strong>and</strong> their groups. That's raw data; it doesn't activate anyone on its own. A student or teacher go live only when they're in an <strong>active group with a paid product combo</strong> — the bundle of products the school actually paid for.</p>
 
       <div class="tablewrap">
         <table>
@@ -220,10 +220,16 @@ flowchart TD
           <figcaption>Synced courses — check the courses to bring in, then run Sync</figcaption>
         </figure>
         <li><span class="st">Review the groups, activate them, and add products.</span><p>Groups come in from rostering — you don't build them. Confirm which ones are correct, add the <strong>paid product combo</strong>, and set them <strong>Active</strong>. That's the gate: active group + paid product combo = the students go live. Apply a combo to one group, or bulk-apply across many at once.</p></li>
-        <div class="shot"><span class="lbl">Screenshot</span>Group list</div>
-        <div class="note"><strong>Merge vs. Replace.</strong> When bulk-applying combos, <strong>Merge</strong> adds the selected combos on top of what each group already has; <strong>Replace</strong> swaps their existing combos for the new selection. The dialog shows how many groups are in scope before you apply.</div>
+        <figure class="shot-img">
+          <img src="img-group-list.png" alt="A school's Groups tab — the groups table with an All / Active / Archived filter and columns for id, Group Identifier, Display Name, Courses, Primary Teacher, Co-Teacher, Coach, Group Size, Rostered Course, Roster Status, and Status; the Actions menu sits above the table." loading="lazy">
+          <figcaption>The Groups list comes in from rostering — review each group, then use Actions to add product combos and set them Active</figcaption>
+        </figure>
+        <div class="note"><strong>Merge vs. Replace.</strong> This toggle only appears when a group <strong>already has a product combo</strong> applied. For <strong>new groups</strong> — or any group not yet set up — there's nothing to merge or replace, so the option doesn't show; you simply pick the combos and apply. When a group already has combos, <strong>Merge</strong> adds the selected combos on top of what it already has, while <strong>Replace</strong> swaps the existing combos for the new selection. The dialog shows how many groups are in scope before you apply.</div>
         <p class="examples"><strong>Example combos</strong> (the full set is in the dialog): Avanza Reading with Phonics; Boost Reading with Phonics, Writing, Oral (ChatterCity); First Step + Online Library (Simplified / Traditional); Level Learning Reading with First Steps, Oral (ChatterCity), and Writing (Traditional).</p>
-        <div class="shot"><span class="lbl">Screenshot</span>Group config — paid product combo field + Active toggle</div>
+        <figure class="shot-img">
+          <img src="img-product-combos.png" alt="The Add Purchased Product Combos dialog opened from the Group Action Center — a Merge / Replace toggle above a checklist of product combos (Avanza Reading with Phonics, Boost Reading with Phonics, First Step + Online Library, Level Learning Reading with First Steps, and more), with a note showing how many groups are in scope." loading="lazy">
+          <figcaption>Add Purchased Product Combos — pick Merge or Replace, check the combos, and apply across the selected groups</figcaption>
+        </figure>
         <li><span class="st">Deactivate everything that doesn't apply.</span><p>Faculty, students, or groups you shouldn't be using — deactivate them, one at a time or <strong>bulk on any layer</strong> (district, school, group, student). An inactive record stays for reference but stops counting. (See Part 5.)</p></li>
       </ol>
 
@@ -350,14 +356,13 @@ flowchart LR
         <li>Last year's groups are retired: a group with <strong>no students and no product combos</strong> is <strong>deleted</strong>; every other group is set to <strong>Inactive</strong>, keeping its combo and roster for historical reporting and renewals.</li>
       </ul>
       <p>Net effect: the old group goes inactive and the new one comes to life. From there, treat the new groups exactly like Part 1 — confirm them, add the paid product combo, set Active.</p>
-      <div class="shot"><span class="lbl">Screenshot</span>An inactive prior-year group retaining its product combo + roster</div>
     </section>
 
     <!-- PART 6 -->
     <section id="part6">
       <p class="sec-eyebrow">Part 6</p>
-      <h2>Districts, schools &amp; admins <span style="color:var(--muted);font-weight:500;font-size:.7em;">— now self-service</span></h2>
-      <p>These used to need a back-end request to engineering. Now you do them yourself, right in the UI:</p>
+      <h2>Districts, schools &amp; admins</h2>
+      <p>These used to mean going into Django to get them done. Now you do them yourself, right in the app:</p>
       <ul class="clean">
         <li>Create / edit a <strong>district</strong></li>
         <li>Create / edit a <strong>school</strong></li>
@@ -376,7 +381,10 @@ flowchart LR
         <img src="img-edit-district.png" alt="The Edit District dialog — district name, a slug used in URLs and IDs, and an Active toggle, with a Save Changes button." loading="lazy">
         <figcaption>The Edit District form — update the name or slug, or toggle Active</figcaption>
       </figure>
-      <div class="shot"><span class="lbl">Screenshot</span>Assigning a district / school admin</div>
+      <figure class="shot-img">
+        <img src="img-assign-admin.png" alt="A school's Faculty tab with the Faculty Action Center open — the Admin Roles section highlighted with Make District Admin, Remove District Admin, Make School Admin, and Remove School Admin actions applied to the selected faculty." loading="lazy">
+        <figcaption>Select faculty, then use the Faculty Action Center's Admin Roles actions to grant or remove district / school admin access</figcaption>
+      </figure>
       <h3>How admin access works</h3>
       <p>You no longer add an admin to each group one by one. Granting someone <strong>district admin</strong> or <strong>school admin</strong> access automatically gives them the whole layer — they can see <strong>every group and all the data</strong> in that district or school.</p>
       <p>This also happens on its own from rostering: faculty brought in through <strong>Clever or ClassLink</strong> who are <strong>marked as an admin</strong> automatically get access at their expected layer (school or district) — no manual step needed.</p>
@@ -388,9 +396,8 @@ flowchart LR
       <h2>Settings: feature flags &amp; roster fields</h2>
       <p>The <strong>Settings</strong> tab lets you tune things <strong>per district</strong>:</p>
       <ul class="clean">
-        <li><strong>Feature flags</strong> — per-district controls for how parts of the app behave. They're not just on/off: many set <strong>values</strong> like level thresholds, phonics score cutoffs, and at-risk usage settings. Each flag shows its <strong>Default</strong> until you override it.</li>
-        <li><strong>Rostering fields</strong> — choose which fields sync from <strong>Clever / ClassLink</strong>, per entity (students, teachers &amp; staff, schools, groups). Each field shows its Clever and ClassLink mapping, and <strong>match keys are required</strong> — they can't be turned off.</li>
-      </ul>
+        <li><strong>Feature flags</strong> — per-district controls for how parts of the app behave.</li>
+        <li><strong>Rostering fields</strong> — choose which fields sync from Clever / ClassLink.</li>
       <figure class="shot-img">
         <img src="img-feature-flags.png" alt="The Settings → Feature Flags tab — a list of flags such as PHONICS_DISABLE_LEVEL_THRESHOLD and FLP_PHONICS_SCORE_THRESHOLD, each with a value dropdown or numeric field and a Default indicator." loading="lazy">
         <figcaption>Feature Flags — per-district controls (thresholds, cutoffs, and toggles), each with a Default you can override</figcaption>
