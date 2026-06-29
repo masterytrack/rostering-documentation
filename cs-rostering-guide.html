@@ -388,10 +388,17 @@ flowchart LR
       <h2>Settings: feature flags &amp; roster fields</h2>
       <p>The <strong>Settings</strong> tab lets you tune things <strong>per district</strong>:</p>
       <ul class="clean">
-        <li><strong>Feature flags</strong> — turn features on/off for that district.</li>
-        <li><strong>Roster field selection</strong> — choose which fields sync over from roster for that district.</li>
+        <li><strong>Feature flags</strong> — per-district controls for how parts of the app behave. They're not just on/off: many set <strong>values</strong> like level thresholds, phonics score cutoffs, and at-risk usage settings. Each flag shows its <strong>Default</strong> until you override it.</li>
+        <li><strong>Rostering fields</strong> — choose which fields sync from <strong>Clever / ClassLink</strong>, per entity (students, teachers &amp; staff, schools, groups). Each field shows its Clever and ClassLink mapping, and <strong>match keys are required</strong> — they can't be turned off.</li>
       </ul>
-      <div class="shot"><span class="lbl">Screenshot</span>Settings tab — feature flags and roster field selection</div>
+      <figure class="shot-img">
+        <img src="img-feature-flags.png" alt="The Settings → Feature Flags tab — a list of flags such as PHONICS_DISABLE_LEVEL_THRESHOLD and FLP_PHONICS_SCORE_THRESHOLD, each with a value dropdown or numeric field and a Default indicator." loading="lazy">
+        <figcaption>Feature Flags — per-district controls (thresholds, cutoffs, and toggles), each with a Default you can override</figcaption>
+      </figure>
+      <figure class="shot-img">
+        <img src="img-rostering-fields.png" alt="The Settings → Rostering Fields tab — a table with a Sync toggle, Entity, Field, and the Clever and ClassLink mappings for each field; match-key fields are flagged and can't be disabled." loading="lazy">
+        <figcaption>Rostering Fields — which fields sync from Clever / ClassLink per entity; match keys are required</figcaption>
+      </figure>
     </section>
 
     <!-- GLOSSARY -->
