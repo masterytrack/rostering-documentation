@@ -157,129 +157,6 @@
     <!-- PART 1 -->
     <section id="part1">
       <p class="sec-eyebrow">Part 1</p>
-      <h2>Rostering &amp; Connections</h2>
-      <p>The <strong>Rostering</strong> tab lives on the <strong>Settings</strong> page (the top, all-districts layer) and shows every district's status at a glance. Click into a district to open its <strong>Connections</strong> tab, which lives inside that district and holds the connection, its sync history and change log, the <strong>course selection</strong> — where you choose which of that district's courses to sync — and a <strong>rostering problems</strong> panel that flags anything a sync couldn't complete cleanly.</p>
-      <div class="diagram">
-        <pre class="mermaid">
-flowchart LR
-    A["Settings page<br/>(top, all districts)"] --> B["Rostering tab<br/>district status at a glance"]
-    B -->|click a district| C["Connections tab<br/>(within the district)"]
-    C --> D["Connection<br/>Clever / ClassLink"]
-    C --> E["Last sync summary"]
-    C --> F["Synced courses<br/>pick courses to sync"]
-    C --> P["Rostering problems<br/>issues + how to resolve"]
-    C --> G["Sync history<br/>time · trigger · result"]
-    C --> H["Change log<br/>what each sync changed"]
-        </pre>
-      </div>
-      <p>On the <strong>Rostering tab</strong> (Settings page):</p>
-      <ul class="clean">
-        <li><strong>District status</strong> — a quick read on every district's rostering health.</li>
-      </ul>
-      <figure class="shot-img">
-        <img src="img-rostering-tab.png" alt="Rostering tab on the Settings page — the All Districts list showing each district's source, sync status, and last sync." loading="lazy">
-        <figcaption>Rostering tab on the Settings page — district status at a glance</figcaption>
-      </figure>
-      <p>Inside a district, the <strong>Connections tab</strong> shows:</p>
-      <ul class="clean">
-        <li><strong>Connection</strong> — the roster provider (Clever or ClassLink, for now) and whether it's connected.</li>
-        <li><strong>Last sync summary</strong> — a snapshot of the most recent sync.</li>
-        <li><strong>Synced courses</strong> — choose which of the district's courses sync in. This is your first filter (see Part 5).</li>
-        <li><strong>Rostering problems</strong> — anything a sync couldn't complete cleanly. Some are engineering's to fix (a failed or stuck sync, bad data from the provider) — just flag the district to the engineering team. Others are yours (a course not synced, a group with no active paid combo, a missing co-teacher) — resolve those in the UI and re-sync.</li>
-        <li><strong>Sync history</strong> — each sync's time, trigger, and result.</li>
-        <li><strong>Change log</strong> — what each sync changed, record by record.</li>
-      </ul>
-      <figure class="shot-img">
-        <img src="img-connections-tab.png" alt="A district's Connections tab — Connection panel with provider and status, Last sync summary counts, and Synced courses." loading="lazy">
-        <figcaption>A district's Connections tab — Connection, Last sync summary, and Synced courses</figcaption>
-      </figure>
-      <figure class="shot-img">
-        <img src="img-synced-courses.png" alt="The Synced courses dialog — a checklist of provider courses with subject, classes, students, and groups, used to pick which courses sync." loading="lazy">
-        <figcaption>Connections tab — Synced courses</figcaption>
-      </figure>
-      <figure class="shot-img">
-        <img src="img-sync-change-log.png" alt="Connections tab — Sync history listing each sync's time, trigger, result, and record count, with the Change log below showing per-record changes." loading="lazy">
-        <figcaption>Connections tab — Sync history and Change log</figcaption>
-      </figure>
-    </section>
-
-    <!-- PART 2 -->
-    <section id="part2">
-      <p class="sec-eyebrow">Part 2</p>
-      <h2>Group roles</h2>
-      <div class="tablewrap">
-        <table>
-          <thead><tr><th>Role</th><th>How many</th><th>How it's set</th><th>Overwritten by sync?</th></tr></thead>
-          <tbody>
-            <tr><td>Primary teacher</td><td>One</td><td>From roster</td><td class="yes">Yes — roster-driven</td></tr>
-            <tr><td>Co-teacher</td><td>One</td><td>Bulk apply, or on group details</td><td class="no">No — not a roster role</td></tr>
-            <tr><td>Coach</td><td>Many</td><td>Bulk apply, or on group details</td><td class="no">No — not a roster role</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>Co-teacher and coach aren't roster roles, so a sync can't overwrite them — set them once and they stick. Assign either by <strong>bulk apply</strong> across groups, or directly on a single group's details.</p>
-      <figure class="shot-img">
-        <img src="img-group-roles.png" alt="A group's Basic Information page with the Faculty section highlighted — Select Faculty, Primary Teacher, Co-Teacher, and Coach fields." loading="lazy">
-        <figcaption>Group details — the Faculty section, with Primary teacher, Co-teacher, and Coach slots</figcaption>
-      </figure>
-      <figure class="shot-img">
-        <img src="img-bulk-apply-roles.png" alt="The Group Action Center panel with the Teacher Assignment actions highlighted — Assign Primary Teacher, Assign Co-Teacher, and Assign Coach — applied across the selected groups." loading="lazy">
-        <figcaption>Group Action Center — bulk Assign Teacher / Co-Teacher / Coach across selected groups</figcaption>
-      </figure>
-    </section>
-
-    <!-- PART 3 -->
-    <section id="part3">
-      <p class="sec-eyebrow">Part 3</p>
-      <h2>Group names &amp; finding the right group</h2>
-      <p><strong>Naming standard:</strong> group names are automatically prefixed with the <strong>primary teacher and co-teacher last names</strong> in parentheses, so you can tell who a group belongs to without opening it.</p>
-      <div class="fmt">
-        <div><span class="k">Format</span>&nbsp;&nbsp;(PrimaryLast/Co-teacherLast) Group name</div>
-        <div><span class="k">Example</span>&nbsp;(Robin/Kazi) 5A Mandarin</div>
-      </div>
-      <div class="note"><strong>Where the names come from:</strong> the prefix is built from the group's <strong>primary teacher</strong> and <strong>co-teacher</strong> slots. If <strong>neither</strong> slot is filled, it falls back to the <strong>first faculty member</strong> in the list instead.</div>
-      <figure class="shot-img">
-        <img src="img-group-name.png" alt="A group's Basic Information page with the group name (256689) LLBH G1D-Chen highlighted at the top, and a breadcrumb showing its district and school." loading="lazy">
-        <figcaption>A group's name identifies the class and teacher; its school and district show in the breadcrumb above</figcaption>
-      </figure>
-      <p><strong>Group picker:</strong> when you choose a group, the picker now shows the <strong>school and district names</strong>. Across an account with more than one school or district, you can see exactly which group you're selecting.</p>
-      <figure class="shot-img">
-        <img src="img-group-picker.png" alt="The Group picker dropdown, with groups grouped under their school and district headings — John Blacow Elementary School, Fremont Unified School District." loading="lazy">
-        <figcaption>The group picker — groups organized under their school and district</figcaption>
-      </figure>
-    </section>
-
-    <!-- PART 4 -->
-    <section id="part4">
-      <p class="sec-eyebrow">Part 4</p>
-      <h2>Active vs. Inactive</h2>
-      <p>The <strong>active/inactive flag</strong> now decides whether a record counts — not whether it exists. Since everything comes in from rostering, flipping records is a core part of the job, and we've made it easy.</p>
-      <ul class="clean">
-        <li>Works across <strong>all layers</strong>: district, school, group, faculty, student.</li>
-        <li><strong>Deactivating cascades down.</strong> Turn off a district and everything inside it — schools, groups, faculty, students — goes inactive too. Same for a school: its groups and people follow.</li>
-        <li><strong>Status column</strong> — every layer's table has a <strong>Status</strong> column, so you can read each record's active/inactive state at a glance.</li>
-        <li><strong>Filter by status</strong> — an <strong>All / Active / Inactive</strong> toggle on each layer lets you show everything or narrow to one; inactive isn't hidden.</li>
-        <li><strong>Bulk apply</strong> active/inactive on any layer — select records, then <strong>Activate</strong> or <strong>Deactivate</strong>.</li>
-        <li><strong>This is how you curate:</strong> deactivate groups, faculty or students you shouldn't be using; the record stays for reference but stops counting.</li>
-      </ul>
-      <div class="rule"><b>Heads up:</b> because deactivation cascades, switching off a district or school takes everything beneath it with it. Deactivate at the layer you actually mean.</div>
-      <figure class="shot-img">
-        <img src="img-active-inactive.png" alt="A school's Groups table with a Status column showing each group's Active state, an All / Active / Inactive filter above the table, and the Group Action Center's Activate and Deactivate bulk controls." loading="lazy">
-        <figcaption>A layer's table — a Status column per row, an All / Active / Inactive filter, and bulk Activate / Deactivate in the Action Center</figcaption>
-      </figure>
-      <h3>Year rollover</h3>
-      <p>At the <strong>start of each new school year</strong> this happens <strong>automatically</strong> — you don't run it. CS gets an <strong>email reminder two weeks before</strong>.</p>
-      <ul class="clean">
-        <li>The <strong>new roster comes in</strong> and creates the new year's groups, associating the relevant students and faculty.</li>
-        <li>Last year's groups are retired: a group with <strong>no students and no product combos</strong> is <strong>deleted</strong>; every other group is set to <strong>Inactive</strong>, keeping its combo and roster for historical reporting and renewals.</li>
-      </ul>
-      <p>Net effect: the old group goes inactive and the new one comes to life. From there, treat the new groups exactly like Part 5 — confirm them, add the paid product combo, set Active.</p>
-      <div class="shot"><span class="lbl">Screenshot</span>An inactive prior-year group retaining its product combo + roster</div>
-    </section>
-
-    <!-- PART 5 -->
-    <section id="part5">
-      <p class="sec-eyebrow">Part 5</p>
       <h2>Activating students &amp; faculty</h2>
 
       <p class="thesis">The roster used to decide who's in. Now an <em>active group with a paid product combo</em> decides.</p>
@@ -337,7 +214,7 @@ flowchart TD
       </div>
 
       <ol class="steps">
-        <li><span class="st">Go to the district's Connections tab, select courses, and sync.</span><p>In the district's <strong>Connections</strong> tab, under <strong>Synced courses</strong> (Part 1), pick which of the district's courses to sync, then run the sync. Everyone in those courses comes in — people <strong>and</strong> their groups — as raw data, <strong>not active yet</strong>. Leave a course unselected (a math-only course, say) and those students never enter the system.</p></li>
+        <li><span class="st">Go to the district's Connections tab, select courses, and sync.</span><p>In the district's <strong>Connections</strong> tab, under <strong>Synced courses</strong> (Part 2), pick which of the district's courses to sync, then run the sync. Everyone in those courses comes in — people <strong>and</strong> their groups — as raw data, <strong>not active yet</strong>. Leave a course unselected (a math-only course, say) and those students never enter the system.</p></li>
         <figure class="shot-img">
           <img src="img-synced-courses-sync.png" alt="The Synced courses dialog with several courses checked, showing each course's subject, classes, students, and groups; the Sync and Full Re-Sync buttons sit to the right." loading="lazy">
           <figcaption>Synced courses — check the courses to bring in, then run Sync</figcaption>
@@ -347,10 +224,133 @@ flowchart TD
         <div class="note"><strong>Merge vs. Replace.</strong> When bulk-applying combos, <strong>Merge</strong> adds the selected combos on top of what each group already has; <strong>Replace</strong> swaps their existing combos for the new selection. The dialog shows how many groups are in scope before you apply.</div>
         <p class="examples"><strong>Example combos</strong> (the full set is in the dialog): Avanza Reading with Phonics; Boost Reading with Phonics, Writing, Oral (ChatterCity); First Step + Online Library (Simplified / Traditional); Level Learning Reading with First Steps, Oral (ChatterCity), and Writing (Traditional).</p>
         <div class="shot"><span class="lbl">Screenshot</span>Group config — paid product combo field + Active toggle</div>
-        <li><span class="st">Deactivate everything that doesn't apply.</span><p>Faculty, students, or groups you shouldn't be using — deactivate them, one at a time or <strong>bulk on any layer</strong> (district, school, group, student). An inactive record stays for reference but stops counting. (See Part 4.)</p></li>
+        <li><span class="st">Deactivate everything that doesn't apply.</span><p>Faculty, students, or groups you shouldn't be using — deactivate them, one at a time or <strong>bulk on any layer</strong> (district, school, group, student). An inactive record stays for reference but stops counting. (See Part 5.)</p></li>
       </ol>
 
       <div class="rule"><b>Rule of thumb:</b> no active group + paid product = the student doesn't count, even if they're in the roster.</div>
+    </section>
+
+    <!-- PART 2 -->
+    <section id="part2">
+      <p class="sec-eyebrow">Part 2</p>
+      <h2>Rostering &amp; Connections</h2>
+      <p>The <strong>Rostering</strong> tab lives on the <strong>Settings</strong> page (the top, all-districts layer) and shows every district's status at a glance. Click into a district to open its <strong>Connections</strong> tab, which lives inside that district and holds the connection, its sync history and change log, the <strong>course selection</strong> — where you choose which of that district's courses to sync — and a <strong>rostering problems</strong> panel that flags anything a sync couldn't complete cleanly.</p>
+      <div class="diagram">
+        <pre class="mermaid">
+flowchart LR
+    A["Settings page<br/>(top, all districts)"] --> B["Rostering tab<br/>district status at a glance"]
+    B -->|click a district| C["Connections tab<br/>(within the district)"]
+    C --> D["Connection<br/>Clever / ClassLink"]
+    C --> E["Last sync summary"]
+    C --> F["Synced courses<br/>pick courses to sync"]
+    C --> P["Rostering problems<br/>issues + how to resolve"]
+    C --> G["Sync history<br/>time · trigger · result"]
+    C --> H["Change log<br/>what each sync changed"]
+        </pre>
+      </div>
+      <p>On the <strong>Rostering tab</strong> (Settings page):</p>
+      <ul class="clean">
+        <li><strong>District status</strong> — a quick read on every district's rostering health.</li>
+      </ul>
+      <figure class="shot-img">
+        <img src="img-rostering-tab.png" alt="Rostering tab on the Settings page — the All Districts list showing each district's source, sync status, and last sync." loading="lazy">
+        <figcaption>Rostering tab on the Settings page — district status at a glance</figcaption>
+      </figure>
+      <p>Inside a district, the <strong>Connections tab</strong> shows:</p>
+      <ul class="clean">
+        <li><strong>Connection</strong> — the roster provider (Clever or ClassLink, for now) and whether it's connected.</li>
+        <li><strong>Last sync summary</strong> — a snapshot of the most recent sync.</li>
+        <li><strong>Synced courses</strong> — choose which of the district's courses sync in. This is your first filter (see Part 1).</li>
+        <li><strong>Rostering problems</strong> — anything a sync couldn't complete cleanly. Some are engineering's to fix (a failed or stuck sync, bad data from the provider) — just flag the district to the engineering team. Others are yours (a course not synced, a group with no active paid combo, a missing co-teacher) — resolve those in the UI and re-sync.</li>
+        <li><strong>Sync history</strong> — each sync's time, trigger, and result.</li>
+        <li><strong>Change log</strong> — what each sync changed, record by record.</li>
+      </ul>
+      <figure class="shot-img">
+        <img src="img-connections-tab.png" alt="A district's Connections tab — Connection panel with provider and status, Last sync summary counts, and Synced courses." loading="lazy">
+        <figcaption>A district's Connections tab — Connection, Last sync summary, and Synced courses</figcaption>
+      </figure>
+      <figure class="shot-img">
+        <img src="img-synced-courses.png" alt="The Synced courses dialog — a checklist of provider courses with subject, classes, students, and groups, used to pick which courses sync." loading="lazy">
+        <figcaption>Connections tab — Synced courses</figcaption>
+      </figure>
+      <figure class="shot-img">
+        <img src="img-sync-change-log.png" alt="Connections tab — Sync history listing each sync's time, trigger, result, and record count, with the Change log below showing per-record changes." loading="lazy">
+        <figcaption>Connections tab — Sync history and Change log</figcaption>
+      </figure>
+    </section>
+
+    <!-- PART 3 -->
+    <section id="part3">
+      <p class="sec-eyebrow">Part 3</p>
+      <h2>Group roles</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Role</th><th>How many</th><th>How it's set</th><th>Overwritten by sync?</th></tr></thead>
+          <tbody>
+            <tr><td>Primary teacher</td><td>One</td><td>From roster</td><td class="yes">Yes — roster-driven</td></tr>
+            <tr><td>Co-teacher</td><td>One</td><td>Bulk apply, or on group details</td><td class="no">No — not a roster role</td></tr>
+            <tr><td>Coach</td><td>Many</td><td>Bulk apply, or on group details</td><td class="no">No — not a roster role</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Co-teacher and coach aren't roster roles, so a sync can't overwrite them — set them once and they stick. Assign either by <strong>bulk apply</strong> across groups, or directly on a single group's details.</p>
+      <figure class="shot-img">
+        <img src="img-group-roles.png" alt="A group's Basic Information page with the Faculty section highlighted — Select Faculty, Primary Teacher, Co-Teacher, and Coach fields." loading="lazy">
+        <figcaption>Group details — the Faculty section, with Primary teacher, Co-teacher, and Coach slots</figcaption>
+      </figure>
+      <figure class="shot-img">
+        <img src="img-bulk-apply-roles.png" alt="The Group Action Center panel with the Teacher Assignment actions highlighted — Assign Primary Teacher, Assign Co-Teacher, and Assign Coach — applied across the selected groups." loading="lazy">
+        <figcaption>Group Action Center — bulk Assign Teacher / Co-Teacher / Coach across selected groups</figcaption>
+      </figure>
+    </section>
+
+    <!-- PART 4 -->
+    <section id="part4">
+      <p class="sec-eyebrow">Part 4</p>
+      <h2>Group names &amp; finding the right group</h2>
+      <p><strong>Naming standard:</strong> group names are automatically prefixed with the <strong>primary teacher and co-teacher last names</strong> in parentheses, so you can tell who a group belongs to without opening it.</p>
+      <div class="fmt">
+        <div><span class="k">Format</span>&nbsp;&nbsp;(PrimaryLast/Co-teacherLast) Group name</div>
+        <div><span class="k">Example</span>&nbsp;(Robin/Kazi) 5A Mandarin</div>
+      </div>
+      <div class="note"><strong>Where the names come from:</strong> the prefix is built from the group's <strong>primary teacher</strong> and <strong>co-teacher</strong> slots. If <strong>neither</strong> slot is filled, it falls back to the <strong>first faculty member</strong> in the list instead.</div>
+      <figure class="shot-img">
+        <img src="img-group-name.png" alt="A group's Basic Information page with the group name (256689) LLBH G1D-Chen highlighted at the top, and a breadcrumb showing its district and school." loading="lazy">
+        <figcaption>A group's name identifies the class and teacher; its school and district show in the breadcrumb above</figcaption>
+      </figure>
+      <p><strong>Group picker:</strong> when you choose a group, the picker now shows the <strong>school and district names</strong>. Across an account with more than one school or district, you can see exactly which group you're selecting.</p>
+      <figure class="shot-img">
+        <img src="img-group-picker.png" alt="The Group picker dropdown, with groups grouped under their school and district headings — John Blacow Elementary School, Fremont Unified School District." loading="lazy">
+        <figcaption>The group picker — groups organized under their school and district</figcaption>
+      </figure>
+    </section>
+
+    <!-- PART 5 -->
+    <section id="part5">
+      <p class="sec-eyebrow">Part 5</p>
+      <h2>Active vs. Inactive</h2>
+      <p>The <strong>active/inactive flag</strong> now decides whether a record counts — not whether it exists. Since everything comes in from rostering, flipping records is a core part of the job, and we've made it easy.</p>
+      <ul class="clean">
+        <li>Works across <strong>all layers</strong>: district, school, group, faculty, student.</li>
+        <li><strong>Deactivating cascades down.</strong> Turn off a district and everything inside it — schools, groups, faculty, students — goes inactive too. Same for a school: its groups and people follow.</li>
+        <li><strong>Status column</strong> — every layer's table has a <strong>Status</strong> column, so you can read each record's active/inactive state at a glance.</li>
+        <li><strong>Filter by status</strong> — an <strong>All / Active / Inactive</strong> toggle on each layer lets you show everything or narrow to one; inactive isn't hidden.</li>
+        <li><strong>Bulk apply</strong> active/inactive on any layer — select records, then <strong>Activate</strong> or <strong>Deactivate</strong>.</li>
+        <li><strong>This is how you curate:</strong> deactivate groups, faculty or students you shouldn't be using; the record stays for reference but stops counting.</li>
+      </ul>
+      <div class="rule"><b>Heads up:</b> because deactivation cascades, switching off a district or school takes everything beneath it with it. Deactivate at the layer you actually mean.</div>
+      <figure class="shot-img">
+        <img src="img-active-inactive.png" alt="A school's Groups table with a Status column showing each group's Active state, an All / Active / Inactive filter above the table, and the Group Action Center's Activate and Deactivate bulk controls." loading="lazy">
+        <figcaption>A layer's table — a Status column per row, an All / Active / Inactive filter, and bulk Activate / Deactivate in the Action Center</figcaption>
+      </figure>
+      <h3>Year rollover</h3>
+      <p>At the <strong>start of each new school year</strong> this happens <strong>automatically</strong> — you don't run it. CS gets an <strong>email reminder two weeks before</strong>.</p>
+      <ul class="clean">
+        <li>The <strong>new roster comes in</strong> and creates the new year's groups, associating the relevant students and faculty.</li>
+        <li>Last year's groups are retired: a group with <strong>no students and no product combos</strong> is <strong>deleted</strong>; every other group is set to <strong>Inactive</strong>, keeping its combo and roster for historical reporting and renewals.</li>
+      </ul>
+      <p>Net effect: the old group goes inactive and the new one comes to life. From there, treat the new groups exactly like Part 1 — confirm them, add the paid product combo, set Active.</p>
+      <div class="shot"><span class="lbl">Screenshot</span>An inactive prior-year group retaining its product combo + roster</div>
     </section>
 
     <!-- PART 6 -->
@@ -418,7 +418,7 @@ flowchart TD
 <script>
   // Each workflow-chart node maps to the section that explains it.
   window.mmJump = function (nodeId) {
-    var map = { A:'part1', B:'part1', C:'part5', D:'part2', E:'part5', F:'part5', X:'part1', G:'part4' };
+    var map = { A:'part2', B:'part2', C:'part1', D:'part3', E:'part1', F:'part1', X:'part2', G:'part5' };
     var el = document.getElementById(map[nodeId]);
     if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
   };
