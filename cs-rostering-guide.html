@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rostering &amp; Account Setup — CS Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.1/mermaid.min.js"></script>
+<style>
+  :root{
+    --ink:#18212b;
+    --muted:#5b6b7a;
+    --line:#e6eaf0;
+    --bg:#eef2f5;
+    --sheet:#ffffff;
+    --brand:#0f766e;        /* teal */
+    --brand-bg:#d7f3ee;
+    --sync:#1d4ed8;         /* blue  */
+    --sync-bg:#e0e9ff;
+    --gate:#b45309;         /* amber */
+    --gate-bg:#fdedc7;
+    --off:#b91c1c;          /* red   */
+    --off-bg:#fde2e2;
+    --radius:14px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.6;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{
+    max-width:880px;
+    margin:32px auto;
+    background:var(--sheet);
+    border-radius:var(--radius);
+    box-shadow:0 1px 2px rgba(16,24,40,.04),0 12px 40px rgba(16,24,40,.10);
+    overflow:hidden;
+  }
+  .topbar{height:6px;background:linear-gradient(90deg,var(--brand),var(--sync) 60%,var(--gate));}
+  .inner{padding:44px 56px 56px;}
+  @media(max-width:640px){.inner{padding:28px 22px 40px;} .sheet{margin:14px;}}
+
+  /* Header */
+  .eyebrow{font-family:"Space Grotesk",sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);margin:0 0 10px;}
+  h1{font-family:"Space Grotesk",sans-serif;font-size:34px;line-height:1.15;font-weight:700;margin:0 0 10px;letter-spacing:-.01em;}
+  .lede{color:var(--muted);font-size:15px;margin:0 0 22px;max-width:60ch;}
+
+  /* Legend */
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px;padding:14px 16px;background:#f7f9fb;border:1px solid var(--line);border-radius:12px;}
+  .chip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;}
+  .chip .dot{width:9px;height:9px;border-radius:50%;}
+  .chip.sync{background:var(--sync-bg);color:var(--sync);}
+  .chip.gate{background:var(--gate-bg);color:var(--gate);}
+  .chip.off{background:var(--off-bg);color:var(--off);}
+  .chip.sync .dot{background:var(--sync);}
+  .chip.gate .dot{background:var(--gate);}
+  .chip.off .dot{background:var(--off);}
+  .legend small{color:var(--muted);font-weight:500;align-self:center;}
+
+  /* Sections */
+  section{padding-top:34px;margin-top:34px;border-top:1px solid var(--line);}
+  section:first-of-type{border-top:none;}
+  .sec-eyebrow{font-family:"Space Grotesk",sans-serif;font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 4px;}
+  h2{font-family:"Space Grotesk",sans-serif;font-size:23px;font-weight:600;margin:0 0 14px;letter-spacing:-.01em;}
+  h3{font-family:"Space Grotesk",sans-serif;font-size:17px;font-weight:600;color:var(--ink);margin:26px 0 8px;letter-spacing:-.005em;}
+  p{margin:0 0 14px;}
+  strong{font-weight:700;}
+  code{font-family:"Space Grotesk",ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;background:#f1f4f7;padding:2px 6px;border-radius:5px;border:1px solid var(--line);}
+
+  /* The shift quote */
+  .thesis{font-family:"Space Grotesk",sans-serif;font-size:20px;line-height:1.35;font-weight:600;color:var(--ink);border-left:4px solid var(--brand);padding:6px 0 6px 18px;margin:0 0 18px;}
+  .thesis em{font-style:normal;color:var(--brand);}
+
+  /* Tables */
+  .tablewrap{overflow-x:auto;margin:0 0 16px;}
+  table{border-collapse:collapse;width:100%;font-size:14.5px;}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--line);vertical-align:top;}
+  thead th{background:var(--brand-bg);color:#0b5249;font-weight:600;font-size:13px;letter-spacing:.01em;border-bottom:none;}
+  tbody tr:nth-child(even){background:#fafbfc;}
+  td:first-child{font-weight:600;}
+  .yes{color:var(--off);font-weight:700;}
+  .no{color:var(--brand);font-weight:700;}
+
+  /* Callouts */
+  .moves{background:var(--brand-bg);border:1px solid #bfe9e1;border-radius:12px;padding:18px 22px;margin:0 0 18px;}
+  .moves .h{font-family:"Space Grotesk",sans-serif;font-weight:600;color:#0b5249;margin:0 0 10px;font-size:14px;letter-spacing:.02em;}
+  .moves ol{margin:0;padding-left:0;counter-reset:m;list-style:none;}
+  .moves li{counter-increment:m;position:relative;padding:6px 0 6px 38px;font-size:14.5px;}
+  .moves li::before{content:counter(m);position:absolute;left:0;top:5px;width:24px;height:24px;border-radius:50%;background:var(--brand);color:#fff;font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:13px;display:flex;align-items:center;justify-content:center;}
+
+  .rule{background:var(--gate-bg);border:1px solid #f0d49a;border-left:4px solid var(--gate);border-radius:10px;padding:13px 16px;margin:18px 0;font-size:14.5px;}
+  .rule b{color:#8a4308;}
+
+  .note{background:#f7f9fb;border:1px solid var(--line);border-radius:10px;padding:13px 16px;margin:16px 0;font-size:14px;color:var(--muted);}
+  .note strong{color:var(--ink);}
+
+  /* Numbered steps */
+  .steps{counter-reset:s;margin:0;padding:0;list-style:none;}
+  .steps > li{counter-increment:s;position:relative;padding:2px 0 16px 46px;}
+  .steps > li::before{content:counter(s);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:9px;background:var(--ink);color:#fff;font-family:"Space Grotesk",sans-serif;font-weight:600;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .steps .st{font-weight:700;display:block;margin-bottom:2px;}
+  .steps p{margin:0;font-size:14.5px;color:#33414f;}
+
+  /* Code example block */
+  .fmt{background:#0f1b29;color:#e6edf3;border-radius:10px;padding:14px 16px;margin:0 0 16px;font-family:"Space Grotesk",ui-monospace,monospace;font-size:13.5px;line-height:1.9;}
+  .fmt .k{color:#7dd3c4;}
+  .fmt code{background:transparent;border:none;color:inherit;padding:0;}
+
+  /* Screenshot placeholder */
+  .shot{border:1.5px dashed #c4cdd8;border-radius:10px;background:repeating-linear-gradient(45deg,#fafbfc,#fafbfc 11px,#f4f6f9 11px,#f4f6f9 22px);padding:16px 16px;margin:10px 0 16px;color:var(--muted);font-size:13.5px;display:flex;align-items:center;gap:10px;}
+  .shot::before{content:"";width:18px;height:18px;border-radius:4px;border:2px solid #aab4c0;background:radial-gradient(circle at 50% 42%,#aab4c0 2.4px,transparent 2.6px);flex:none;}
+  .shot .lbl{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#8693a2;background:#fff;border:1px solid var(--line);border-radius:5px;padding:2px 7px;flex:none;}
+  .shot-img{margin:10px 0 16px;}
+  .shot-img img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 3px rgba(16,24,40,.06);}
+  .shot-img figcaption{margin-top:7px;font-size:12.5px;color:var(--muted);text-align:center;}
+
+  /* Mermaid */
+  .diagram{background:#f7f9fb;border:1px solid var(--line);border-radius:12px;padding:18px;margin:0 0 18px;text-align:center;overflow-x:auto;}
+  .mermaid{font-family:"Inter",sans-serif;}
+
+  .examples{font-size:14px;color:#33414f;margin:0 0 16px;}
+  .hint{font-size:12.5px;color:var(--muted);margin:-4px 0 16px;text-align:center;}
+  .diagram .node.clickable,.diagram .clickable{cursor:pointer;}
+  .diagram .node.clickable:hover{filter:brightness(.96);}
+  .glossary dl{margin:0;}
+  .glossary dt{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:14px;color:var(--ink);margin-top:13px;}
+  .glossary dd{margin:2px 0 0;font-size:14px;color:#33414f;}
+  ul.clean{margin:0 0 14px;padding-left:20px;}
+  ul.clean li{margin:6px 0;font-size:14.5px;}
+
+  footer{padding:18px 56px 30px;color:#9aa6b2;font-size:12px;font-family:"Space Grotesk",sans-serif;letter-spacing:.04em;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .sheet{animation:rise .5s ease both;}
+    @keyframes rise{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="topbar"></div>
+  <div class="inner">
+
+    <!-- HEADER -->
+    <p class="eyebrow">Customer Success · Internal Guide</p>
+    <h1>Rostering &amp; Account Setup</h1>
+    <p class="lede">What changed in the new system and how to run your workflows.</p>
+
+    <!-- THE SHIFT -->
+    <section id="overview">
+      <p class="sec-eyebrow">The shift</p>
+      <p class="thesis">The roster used to decide who's in. Now an <em>active group with a paid product combo</em> decides.</p>
+      <p>Everything on the roster syncs in — people <strong>and</strong> their groups. That's raw data; it doesn't activate anyone on its own. A student goes live only when they're in an <strong>active group with a paid product combo</strong> — the bundle of products the school actually paid for.</p>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th></th><th>Old way</th><th>New way</th></tr></thead>
+          <tbody>
+            <tr><td>The gate</td><td>The roster file</td><td>Active group + paid product combo</td></tr>
+            <tr><td>Who syncs in</td><td>Only those who "passed" the roster gate</td><td>Everyone in the selected courses — people <em>and</em> their groups</td></tr>
+            <tr><td>How you filter</td><td>Filter people out at the roster</td><td>Select courses at sync, activate via groups, deactivate the rest</td></tr>
+            <tr><td>Inactive records</td><td>Hidden / gone</td><td>Visible on every layer, but deactivated for history</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="diagram">
+        <pre class="mermaid">
+flowchart TD
+    A["District sends their courses"] --> B{"Select which<br/>courses sync"}
+    B -->|Selected| C["People AND their groups<br/>sync in from roster"]
+    B -->|Not selected| X["Never enters our system"]
+    C --> D["Confirm the correct groups"]
+    D --> E["Add paid product combo<br/>+ set group ACTIVE"]
+    E --> F["Students go live"]
+    C --> G["Deactivate what you don't need"]
+
+    classDef gate fill:#fdedc7,stroke:#b45309,color:#7a3c08;
+    classDef sync fill:#e0e9ff,stroke:#1d4ed8,color:#163a9e;
+    classDef off fill:#fde2e2,stroke:#b91c1c,color:#8a1414;
+    class B sync;
+    class E gate;
+    class G off;
+
+    click A mmJump
+    click B mmJump
+    click C mmJump
+    click D mmJump
+    click E mmJump
+    click F mmJump
+    click X mmJump
+    click G mmJump
+        </pre>
+      </div>
+      <p class="hint">Tip — click any step in the chart to jump to the part that explains it.</p>
+    </section>
+
+    <!-- PART 1 -->
+    <section id="part1">
+      <p class="sec-eyebrow">Part 1</p>
+      <h2>Rostering &amp; Connections</h2>
+      <p>The <strong>Rostering</strong> tab lives on the <strong>Settings</strong> page (the top, all-districts layer) and shows every district's status at a glance. Click into a district to open its <strong>Connections</strong> tab, which lives inside that district and holds the connection, its sync history and change log, the <strong>course selection</strong> — where you choose which of that district's courses to sync — and a <strong>rostering problems</strong> panel that flags anything a sync couldn't complete cleanly.</p>
+      <div class="diagram">
+        <pre class="mermaid">
+flowchart LR
+    A["Settings page<br/>(top, all districts)"] --> B["Rostering tab<br/>district status at a glance"]
+    B -->|click a district| C["Connections tab<br/>(within the district)"]
+    C --> D["Connection<br/>Clever / ClassLink"]
+    C --> E["Last sync summary"]
+    C --> F["Synced courses<br/>pick courses to sync"]
+    C --> P["Rostering problems<br/>issues + how to resolve"]
+    C --> G["Sync history<br/>time · trigger · result"]
+    C --> H["Change log<br/>what each sync changed"]
+        </pre>
+      </div>
+      <p>On the <strong>Rostering tab</strong> (Settings page):</p>
+      <ul class="clean">
+        <li><strong>District status</strong> — a quick read on every district's rostering health.</li>
+      </ul>
+      <figure class="shot-img">
+        <img src="img-rostering-tab.png" alt="Rostering tab on the Settings page — the All Districts list showing each district's source, sync status, and last sync." loading="lazy">
+        <figcaption>Rostering tab on the Settings page — district status at a glance</figcaption>
+      </figure>
+      <p>Inside a district, the <strong>Connections tab</strong> shows:</p>
+      <ul class="clean">
+        <li><strong>Connection</strong> — the roster provider (Clever or ClassLink, for now) and whether it's connected.</li>
+        <li><strong>Last sync summary</strong> — a snapshot of the most recent sync.</li>
+        <li><strong>Synced courses</strong> — choose which of the district's courses sync in. This is your first filter (see Part 5).</li>
+        <li><strong>Rostering problems</strong> — anything a sync couldn't complete cleanly. Some are engineering's to fix (a failed or stuck sync, bad data from the provider) — just flag the district to the engineering team. Others are yours (a course not synced, a group with no active paid combo, a missing co-teacher) — resolve those in the UI and re-sync.</li>
+        <li><strong>Sync history</strong> — each sync's time, trigger, and result.</li>
+        <li><strong>Change log</strong> — what each sync changed, record by record.</li>
+      </ul>
+      <figure class="shot-img">
+        <img src="img-connections-tab.png" alt="A district's Connections tab — Connection panel with provider and status, Last sync summary counts, and Synced courses." loading="lazy">
+        <figcaption>A district's Connections tab — Connection, Last sync summary, and Synced courses</figcaption>
+      </figure>
+      <figure class="shot-img">
+        <img src="img-synced-courses.png" alt="The Synced courses dialog — a checklist of provider courses with subject, classes, students, and groups, used to pick which courses sync." loading="lazy">
+        <figcaption>Connections tab — Synced courses</figcaption>
+      </figure>
+      <figure class="shot-img">
+        <img src="img-sync-change-log.png" alt="Connections tab — Sync history listing each sync's time, trigger, result, and record count, with the Change log below showing per-record changes." loading="lazy">
+        <figcaption>Connections tab — Sync history and Change log</figcaption>
+      </figure>
+    </section>
+
+    <!-- PART 2 -->
+    <section id="part2">
+      <p class="sec-eyebrow">Part 2</p>
+      <h2>Group roles</h2>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Role</th><th>How many</th><th>How it's set</th><th>Overwritten by sync?</th></tr></thead>
+          <tbody>
+            <tr><td>Primary teacher</td><td>One</td><td>From roster</td><td class="yes">Yes — roster-driven</td></tr>
+            <tr><td>Co-teacher</td><td>One</td><td>Bulk apply, or on group details</td><td class="no">No — not a roster role</td></tr>
+            <tr><td>Coach</td><td>Many</td><td>Bulk apply, or on group details</td><td class="no">No — not a roster role</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Co-teacher and coach aren't roster roles, so a sync can't overwrite them — set them once and they stick. Assign either by <strong>bulk apply</strong> across groups, or directly on a single group's details.</p>
+      <figure class="shot-img">
+        <img src="img-group-roles.png" alt="A group's Basic Information page with the Faculty section highlighted — Select Faculty, Primary Teacher, Co-Teacher, and Coach fields." loading="lazy">
+        <figcaption>Group details — the Faculty section, with Primary teacher, Co-teacher, and Coach slots</figcaption>
+      </figure>
+      <figure class="shot-img">
+        <img src="img-bulk-apply-roles.png" alt="The Group Action Center panel with the Teacher Assignment actions highlighted — Assign Primary Teacher, Assign Co-Teacher, and Assign Coach — applied across the selected groups." loading="lazy">
+        <figcaption>Group Action Center — bulk Assign Teacher / Co-Teacher / Coach across selected groups</figcaption>
+      </figure>
+    </section>
+
+    <!-- PART 3 -->
+    <section id="part3">
+      <p class="sec-eyebrow">Part 3</p>
+      <h2>Group names &amp; finding the right group</h2>
+      <p><strong>Naming standard:</strong> group names are automatically prefixed with the <strong>primary teacher and co-teacher last names</strong> in parentheses, so you can tell who a group belongs to without opening it.</p>
+      <div class="fmt">
+        <div><span class="k">Format</span>&nbsp;&nbsp;(PrimaryLast/Co-teacherLast) Group name</div>
+        <div><span class="k">Example</span>&nbsp;(Robin/Kazi) 5A Mandarin</div>
+      </div>
+      <figure class="shot-img">
+        <img src="img-group-name.png" alt="A group's Basic Information page with the group name (256689) LLBH G1D-Chen highlighted at the top, and a breadcrumb showing its district and school." loading="lazy">
+        <figcaption>A group's name identifies the class and teacher; its school and district show in the breadcrumb above</figcaption>
+      </figure>
+      <p><strong>Group picker:</strong> when you choose a group, the picker now shows the <strong>school and district names</strong>. Across an account with more than one school or district, you can see exactly which group you're selecting.</p>
+      <figure class="shot-img">
+        <img src="img-group-picker.png" alt="The Group picker dropdown, with groups grouped under their school and district headings — John Blacow Elementary School, Fremont Unified School District." loading="lazy">
+        <figcaption>The group picker — groups organized under their school and district</figcaption>
+      </figure>
+    </section>
+
+    <!-- PART 4 -->
+    <section id="part4">
+      <p class="sec-eyebrow">Part 4</p>
+      <h2>Active vs. Inactive</h2>
+      <p>The <strong>active/inactive flag</strong> now decides whether a record counts — not whether it exists. Since everything comes in from rostering, flipping records is a core part of the job, and we've made it easy.</p>
+      <ul class="clean">
+        <li>Works across <strong>all layers</strong>: district, school, group, student.</li>
+        <li><strong>Deactivating cascades down.</strong> Turn off a district and everything inside it — schools, groups, faculty, students — goes inactive too. Same for a school: its groups and people follow.</li>
+        <li><strong>View both active and inactive</strong> on every layer — inactive isn't hidden.</li>
+        <li><strong>Bulk apply</strong> active/inactive on any layer.</li>
+        <li><strong>This is how you curate:</strong> deactivate faculty or students you shouldn't be using; the record stays for reference but stops counting.</li>
+      </ul>
+      <div class="rule"><b>Heads up:</b> because deactivation cascades, switching off a district or school takes everything beneath it with it. Deactivate at the layer you actually mean.</div>
+      <div class="shot"><span class="lbl">Screenshot</span>A layer view with active + inactive records and bulk controls</div>
+      <h3>Year rollover</h3>
+      <p>At the <strong>start of each new school year</strong> this happens <strong>automatically</strong> — you don't run it. CS gets an <strong>email reminder two weeks before</strong>.</p>
+      <ul class="clean">
+        <li>The <strong>new roster comes in</strong> and creates the new year's groups, associating the relevant students and faculty.</li>
+        <li>Last year's groups are retired: a group with <strong>no students and no product combos</strong> is <strong>deleted</strong>; every other group is set to <strong>Inactive</strong>, keeping its combo and roster for historical reporting and renewals.</li>
+      </ul>
+      <p>Net effect: the old group goes inactive and the new one comes to life. From there, treat the new groups exactly like Part 5 — confirm them, add the paid product combo, set Active.</p>
+      <div class="shot"><span class="lbl">Screenshot</span>An inactive prior-year group retaining its product combo + roster</div>
+    </section>
+
+    <!-- PART 5 -->
+    <section id="part5">
+      <p class="sec-eyebrow">Part 5</p>
+      <h2>Activating students</h2>
+
+      <div class="moves">
+        <p class="h">The job, in three moves</p>
+        <ol>
+          <li><strong>Sync the right courses</strong> in the district's Connections tab.</li>
+          <li><strong>Review the groups,</strong> add a paid product combo, set them Active.</li>
+          <li><strong>Deactivate</strong> anything that doesn't apply.</li>
+        </ol>
+      </div>
+
+      <ol class="steps">
+        <li><span class="st">Go to the district's Connections tab, select courses, and sync.</span><p>In the district's <strong>Connections</strong> tab, under <strong>Synced courses</strong> (Part 1), pick which of the district's courses to sync, then run the sync. Everyone in those courses comes in — people <strong>and</strong> their groups — as raw data, <strong>not active yet</strong>. Leave a course unselected (a math-only course, say) and those students never enter the system.</p></li>
+        <div class="shot"><span class="lbl">Screenshot</span>Connections tab — Synced courses + Sync</div>
+        <li><span class="st">Review the groups, activate them, and add products.</span><p>Groups come in from rostering — you don't build them. Confirm which ones are correct, add the <strong>paid product combo</strong>, and set them <strong>Active</strong>. That's the gate: active group + paid product combo = the students go live. Apply a combo to one group, or bulk-apply across many at once.</p></li>
+        <div class="shot"><span class="lbl">Screenshot</span>Group list</div>
+        <div class="note"><strong>Merge vs. Replace.</strong> When bulk-applying combos, <strong>Merge</strong> adds the selected combos on top of what each group already has; <strong>Replace</strong> swaps their existing combos for the new selection. The dialog shows how many groups are in scope before you apply.</div>
+        <p class="examples"><strong>Example combos</strong> (the full set is in the dialog): Avanza Reading with Phonics; Boost Reading with Phonics, Writing, Oral (ChatterCity); First Step + Online Library (Simplified / Traditional); Level Learning Reading with First Steps, Oral (ChatterCity), and Writing (Traditional).</p>
+        <div class="shot"><span class="lbl">Screenshot</span>Group config — paid product combo field + Active toggle</div>
+        <li><span class="st">Deactivate everything that doesn't apply.</span><p>Faculty, students, or groups you shouldn't be using — deactivate them, one at a time or <strong>bulk on any layer</strong> (district, school, group, student). An inactive record stays for reference but stops counting. (See Part 4.)</p></li>
+      </ol>
+
+      <div class="rule"><b>Rule of thumb:</b> no active group + paid product = the student doesn't count, even if they're in the roster.</div>
+    </section>
+
+    <!-- PART 6 -->
+    <section id="part6">
+      <p class="sec-eyebrow">Part 6</p>
+      <h2>Districts, schools &amp; admins <span style="color:var(--muted);font-weight:500;font-size:.7em;">— now self-service</span></h2>
+      <p>These used to need a back-end request to engineering. Now you do them yourself, right in the UI:</p>
+      <ul class="clean">
+        <li>Create / edit a <strong>district</strong></li>
+        <li>Create / edit a <strong>school</strong></li>
+        <li>Assign <strong>district admins</strong> and <strong>school admins</strong></li>
+      </ul>
+      <div class="shot"><span class="lbl">Screenshot</span>District + school create/edit forms</div>
+      <div class="shot"><span class="lbl">Screenshot</span>Assigning a district / school admin</div>
+      <h3>How admin access works</h3>
+      <p>You no longer add an admin to each group one by one. Granting someone <strong>district admin</strong> or <strong>school admin</strong> access automatically gives them the whole layer — they can see <strong>every group and all the data</strong> in that district or school.</p>
+      <p>This also happens on its own from rostering: faculty brought in through <strong>Clever or ClassLink</strong> who are <strong>marked as an admin</strong> automatically get access at their expected layer (school or district) — no manual step needed.</p>
+    </section>
+
+    <!-- PART 7 -->
+    <section id="part7">
+      <p class="sec-eyebrow">Part 7</p>
+      <h2>Settings: feature flags &amp; roster fields</h2>
+      <p>The <strong>Settings</strong> tab lets you tune things <strong>per district</strong>:</p>
+      <ul class="clean">
+        <li><strong>Feature flags</strong> — turn features on/off for that district.</li>
+        <li><strong>Roster field selection</strong> — choose which fields sync over from roster for that district.</li>
+      </ul>
+      <div class="shot"><span class="lbl">Screenshot</span>Settings tab — feature flags and roster field selection</div>
+    </section>
+
+    <!-- GLOSSARY -->
+    <section id="glossary">
+      <p class="sec-eyebrow">Reference</p>
+      <h2>Words you'll see</h2>
+      <div class="glossary">
+        <dl>
+          <dt>Roster</dt><dd>The list of districts, schools, teachers, and students that the customer's system sends us.</dd>
+          <dt>Sync</dt><dd>When that roster data is pulled into our system and refreshed.</dd>
+          <dt>Clever / ClassLink</dt><dd>The services districts use to send us their roster.</dd>
+          <dt>Product combo</dt><dd>The bundle of products a school paid for — for example, "Avanza Reading with Phonics."</dd>
+          <dt>Active / Inactive</dt><dd>Whether a record counts in the product right now. Inactive stays visible for history but doesn't count.</dd>
+          <dt>Layer</dt><dd>A level in the account — district, school, group, or student.</dd>
+          <dt>Feature flag</dt><dd>A switch that turns a specific feature on or off for one district.</dd>
+        </dl>
+      </div>
+    </section>
+
+  </div>
+  <footer>Level Learning · Customer Success</footer>
+</div>
+
+<script>
+  // Each workflow-chart node maps to the section that explains it.
+  window.mmJump = function (nodeId) {
+    var map = { A:'part1', B:'part1', C:'part5', D:'part2', E:'part5', F:'part5', X:'part1', G:'part4' };
+    var el = document.getElementById(map[nodeId]);
+    if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
+  };
+  // Set config (incl. loose, required for click callbacks) BEFORE rendering, then render explicitly.
+  mermaid.initialize({
+    startOnLoad:false,
+    securityLevel:'loose',
+    theme:'base',
+    flowchart:{ htmlLabels:true, useMaxWidth:true, nodeSpacing:55, rankSpacing:65, padding:14 },
+    themeVariables:{
+      fontFamily:'Inter, sans-serif',
+      fontSize:'14px',
+      primaryColor:'#ffffff',
+      primaryBorderColor:'#0f766e',
+      primaryTextColor:'#18212b',
+      lineColor:'#94a3b8',
+      tertiaryColor:'#f7f9fb'
+    }
+  });
+  // Render only after web fonts load, so Mermaid measures label widths with the
+  // real Inter metrics — otherwise boxes are sized for a fallback font and clip the text.
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function(){ mermaid.run(); });
+  } else {
+    window.addEventListener('load', function(){ mermaid.run(); });
+  }
+</script>
+</body>
+</html>
