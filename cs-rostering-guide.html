@@ -152,100 +152,79 @@
     <!-- HEADER -->
     <p class="eyebrow">Customer Success · Internal Guide</p>
     <h1>Rostering &amp; Account Setup</h1>
-    <p class="lede">What changed in the new system and how to run your workflows.</p>
+    <p class="lede">How rostering works in the new system — and the exact steps to bring a district online.</p>
+
+    <!-- OVERVIEW — the steps, up top -->
+    <div class="moves" id="overview">
+      <p class="h">Rostering a district — start to finish</p>
+      <ol>
+        <li><strong>Open the Rostering tab</strong> on the all-districts page — it lives in <strong>Settings</strong>, and everything about rostering now starts here.</li>
+        <li><strong>Link or create the district</strong> — Link it if it's already in our system, Create District if it's new.</li>
+        <li><strong>Pick which courses sync</strong> in the district's Connections tab. This is the only filter on what comes in; by default nothing is selected.</li>
+        <li><strong>Activate the schools &amp; groups you need</strong> — schools, groups, and students come in inactive; activating a group turns its students active.</li>
+        <li><strong>Add product combos</strong> to the active groups — that's what gives their students access.</li>
+      </ol>
+    </div>
 
     <!-- PART 1 -->
     <section id="part1">
       <p class="sec-eyebrow">Part 1</p>
-      <h2>Activating students &amp; faculty</h2>
+      <h2>Rostering a district, step by step</h2>
 
-      <p class="thesis">The roster used to decide who's in. Now an <em>active group with a paid product combo</em> decides.</p>
-      <p>Everything on the roster syncs in — people <strong>and</strong> their groups. That's raw data; it doesn't activate anyone on its own. A student or teacher go live only when they're in an <strong>active group with a paid product combo</strong> — the bundle of products the school actually paid for.</p>
+      <p class="thesis">Clever/ClassLink used to decide what comes into our system. Now <em>the courses you choose to sync</em> decide — and you activate the groups you need.</p>
+      <p>Everything tied to the courses you sync comes in from <strong>Clever/ClassLink</strong> — schools, groups, faculty, and students. <strong>Faculty come in active; schools, groups, and students come in Inactive.</strong> Activating a group turns its students active, so the work is to <strong>activate the groups that matter</strong> and give them a <strong>product combo</strong>.</p>
 
       <div class="tablewrap">
         <table>
           <thead><tr><th></th><th>Old way</th><th>New way</th></tr></thead>
           <tbody>
-            <tr><td>The gate</td><td>The roster file</td><td>Active group + paid product combo</td></tr>
-            <tr><td>Who syncs in</td><td>Only those who "passed" the roster gate</td><td>Everyone in the selected courses — people <em>and</em> their groups</td></tr>
-            <tr><td>How you filter</td><td>Filter people out at the roster</td><td>Select courses at sync, activate via groups, deactivate the rest</td></tr>
-            <tr><td>Inactive records</td><td>Hidden / gone</td><td>Visible on every layer, but deactivated for history</td></tr>
+            <tr><td>The import gate</td><td>Clever/ClassLink decided who came in</td><td>The <strong>Synced courses</strong> filter — and nothing else</td></tr>
+            <tr><td>Who comes in</td><td>Only records that "passed" the gate</td><td>Everyone in the courses you select — groups <em>and</em> people</td></tr>
+            <tr><td>How records arrive</td><td>Active, or hidden if filtered out</td><td>Faculty active; schools, groups &amp; students come in <strong>Inactive</strong></td></tr>
+            <tr><td>Your core job</td><td>Filter people out</td><td><strong>Activate</strong> the groups you need; combos give access</td></tr>
           </tbody>
         </table>
       </div>
 
-      <div class="diagram">
-        <pre class="mermaid">
-flowchart TD
-    A["District sends their courses"] --> B{"Select which<br/>courses sync"}
-    B -->|Selected| C["People AND their groups<br/>sync in from roster"]
-    B -->|Not selected| X["Never enters our system"]
-    C --> D["Confirm the correct groups"]
-    D --> E["Add paid product combo<br/>+ set group ACTIVE"]
-    E --> F["Students go live"]
-    C --> G["Deactivate what you don't need"]
-
-    classDef gate fill:#fdedc7,stroke:#b45309,color:#7a3c08;
-    classDef sync fill:#e0e9ff,stroke:#1d4ed8,color:#163a9e;
-    classDef off fill:#fde2e2,stroke:#b91c1c,color:#8a1414;
-    class B sync;
-    class E gate;
-    class G off;
-
-    click A mmJump
-    click B mmJump
-    click C mmJump
-    click D mmJump
-    click E mmJump
-    click F mmJump
-    click X mmJump
-    click G mmJump
-        </pre>
-      </div>
-      <p class="hint">Tip — click any step in the chart to jump to the part that explains it.</p>
-
-      <div class="moves">
-        <p class="h">The job, in three moves</p>
-        <ol>
-          <li><strong>Sync the right courses</strong> in the district's Connections tab.</li>
-          <li><strong>Review the groups,</strong> add a paid product combo, set them Active.</li>
-          <li><strong>Deactivate</strong> anything that doesn't apply.</li>
-        </ol>
-      </div>
-
       <ol class="steps">
-        <li><span class="st">Go to the district's Connections tab, select courses, and sync.</span><p>In the district's <strong>Connections</strong> tab, under <strong>Synced courses</strong> (Part 2), pick which of the district's courses to sync, then run the sync. Everyone in those courses comes in — people <strong>and</strong> their groups — as raw data, <strong>not active yet</strong>. Leave a course unselected (a math-only course, say) and those students never enter the system.</p></li>
+        <li><span class="st">Open the Rostering tab on the all-districts page.</span><p>It lives on the <strong>Settings</strong> page (the top, all-districts layer) — <strong>everything about rostering now starts here</strong>. The tab lists every district with its rostering status at a glance.</p></li>
+        <figure class="shot-img">
+          <img src="img-rostering-tab.png" alt="Rostering tab on the Settings page — the All Districts list showing each district's source, sync status, and last sync." loading="lazy">
+          <figcaption>Rostering tab on the Settings page — district status at a glance</figcaption>
+        </figure>
+        <li><span class="st">Link or create the district.</span><p>If the district <strong>already exists</strong> in our system, click <strong>Link</strong> to associate it. If it's <strong>brand-new</strong>, click <strong>Create District</strong> to add it.</p></li>
+        <div class="note"><strong>Link vs. Create.</strong> <strong>Link</strong> reuses a district we already have in the system; <strong>Create District</strong> adds one we don't. <em>(Screenshot to follow.)</em></div>
+        <li><span class="st">Pick which courses sync — then run the sync.</span><p>Click into the district and open its <strong>Connections</strong> tab. Under <strong>Synced courses</strong>, check the courses you want and run the sync. <strong>By default nothing is selected</strong>, so nothing comes in until you choose. Everyone tied to those courses arrives — groups <strong>and</strong> people — straight from <strong>Clever/ClassLink</strong>. Leave a course unchecked (a math-only course, say) and those students never enter the system.</p></li>
         <figure class="shot-img">
           <img src="img-synced-courses-sync.png" alt="The Synced courses dialog with several courses checked, showing each course's subject, classes, students, and groups; the Sync and Full Re-Sync buttons sit to the right." loading="lazy">
           <figcaption>Synced courses — check the courses to bring in, then run Sync</figcaption>
         </figure>
-        <li><span class="st">Review the groups, activate them, and add products.</span><p>Groups come in from rostering — you don't build them. Confirm which ones are correct, add the <strong>paid product combo</strong>, and set them <strong>Active</strong>. That's the gate: active group + paid product combo = the students go live. Apply a combo to one group, or bulk-apply across many at once.</p></li>
+        <li><span class="st">Activate the schools and groups you need.</span><p>Because <strong>schools, groups, and students land Inactive</strong>, the core job is activating what matters. The groups come in from <strong>Clever/ClassLink</strong> (you don't build them); review them, then <strong>Activate</strong> the ones you need, one at a time or <strong>bulk on any layer</strong>. <strong>Activating a group turns its students active</strong> (and deactivating it turns them off). Extra groups you never activate do no harm — they stay Inactive and out of the way.</p></li>
         <figure class="shot-img">
           <img src="img-group-list.png" alt="A school's Groups tab — the groups table with an All / Active / Archived filter and columns for id, Group Identifier, Display Name, Courses, Primary Teacher, Co-Teacher, Coach, Group Size, Rostered Course, Roster Status, and Status; the Actions menu sits above the table." loading="lazy">
-          <figcaption>The Groups list comes in from rostering — review each group, then use Actions to add product combos and set them Active</figcaption>
+          <figcaption>The Groups list comes in from Clever/ClassLink — review each group, then Activate the ones that matter</figcaption>
         </figure>
+        <li><span class="st">Add product combos to the active groups.</span><p>A <strong>product combo</strong> is the bundle of products the school paid for. Add it to an <strong>active</strong> group and <strong>all that group's students get access</strong> — same as before. Apply a combo to one group, or bulk-apply across many at once.</p></li>
         <div class="note"><strong>Merge vs. Replace.</strong> This toggle only appears when a group <strong>already has a product combo</strong> applied. For <strong>new groups</strong> — or any group not yet set up — there's nothing to merge or replace, so the option doesn't show; you simply pick the combos and apply. When a group already has combos, <strong>Merge</strong> adds the selected combos on top of what it already has, while <strong>Replace</strong> swaps the existing combos for the new selection. The dialog shows how many groups are in scope before you apply.</div>
-        <p class="examples"><strong>Example combos</strong> (the full set is in the dialog): Avanza Reading with Phonics; Boost Reading with Phonics, Writing, Oral (ChatterCity); First Step + Online Library (Simplified / Traditional); Level Learning Reading with First Steps, Oral (ChatterCity), and Writing (Traditional).</p>
         <figure class="shot-img">
           <img src="img-product-combos.png" alt="The Add Purchased Product Combos dialog opened from the Group Action Center — a Merge / Replace toggle above a checklist of product combos (Avanza Reading with Phonics, Boost Reading with Phonics, First Step + Online Library, Level Learning Reading with First Steps, and more), with a note showing how many groups are in scope." loading="lazy">
           <figcaption>Add Purchased Product Combos — pick Merge or Replace, check the combos, and apply across the selected groups</figcaption>
         </figure>
-        <li><span class="st">Deactivate everything that doesn't apply.</span><p>Faculty, students, or groups you shouldn't be using — deactivate them, one at a time or <strong>bulk on any layer</strong> (district, school, group, student). An inactive record stays for reference but stops counting. (See Part 5.)</p></li>
       </ol>
 
-      <div class="rule"><b>Rule of thumb:</b> no active group + paid product = the student doesn't count, even if they're in the roster.</div>
+      <div class="rule"><b>Rule of thumb:</b> <strong>students come in Inactive</strong> — activating their group turns them active, and a <strong>product combo</strong> is what gives them access.</div>
     </section>
 
     <!-- PART 2 -->
     <section id="part2">
       <p class="sec-eyebrow">Part 2</p>
       <h2>Rostering &amp; Connections</h2>
-      <p>The <strong>Rostering</strong> tab lives on the <strong>Settings</strong> page (the top, all-districts layer) and shows every district's status at a glance. Click into a district to open its <strong>Connections</strong> tab, which lives inside that district and holds the connection, its sync history and change log, the <strong>course selection</strong> — where you choose which of that district's courses to sync — and a <strong>rostering problems</strong> panel that flags anything a sync couldn't complete cleanly.</p>
+      <p>The <strong>Rostering</strong> tab lives on the <strong>Settings</strong> page (the top, all-districts layer) — <strong>everything about rostering now starts here</strong>. It shows every district's status at a glance, and it's where you <strong>link or create a district</strong> before you sync. Click into a district to open its <strong>Connections</strong> tab, which lives inside that district and holds the connection, its sync history and change log, the <strong>course selection</strong> — where you choose which of that district's courses to sync — and a <strong>rostering problems</strong> panel that flags anything a sync couldn't complete cleanly.</p>
       <div class="diagram">
         <pre class="mermaid">
 flowchart LR
-    A["Settings page<br/>(top, all districts)"] --> B["Rostering tab<br/>district status at a glance"]
-    B -->|click a district| C["Connections tab<br/>(within the district)"]
+    A["Settings page<br/>(top, all districts)"] --> B["Rostering tab<br/>status · link / create district"]
+    B -->|open a district| C["Connections tab<br/>(within the district)"]
     C --> D["Connection<br/>Clever / ClassLink"]
     C --> E["Last sync summary"]
     C --> F["Synced courses<br/>pick courses to sync"]
@@ -254,22 +233,15 @@ flowchart LR
     C --> H["Change log<br/>what each sync changed"]
         </pre>
       </div>
-      <p>On the <strong>Rostering tab</strong> (Settings page):</p>
-      <ul class="clean">
-        <li><strong>District status</strong> — a quick read on every district's rostering health.</li>
-      </ul>
-      <figure class="shot-img">
-        <img src="img-rostering-tab.png" alt="Rostering tab on the Settings page — the All Districts list showing each district's source, sync status, and last sync." loading="lazy">
-        <figcaption>Rostering tab on the Settings page — district status at a glance</figcaption>
-      </figure>
+      <p>The <strong>Rostering tab</strong> (Settings page) lists every district with its <strong>status</strong> at a glance, and is where you <strong>link or create a district</strong> — covered in Steps 1–2 above. Open a district from here to reach its <strong>Connections</strong> tab.</p>
       <p>Inside a district, the <strong>Connections tab</strong> shows:</p>
       <ul class="clean">
         <li><strong>Connection</strong> — the roster provider (Clever or ClassLink, for now) and whether it's connected.</li>
         <li><strong>Last sync summary</strong> — a snapshot of the most recent sync.</li>
-        <li><strong>Synced courses</strong> — choose which of the district's courses sync in. This is your first filter (see Part 1).</li>
-        <li><strong>Rostering problems</strong> — anything a sync couldn't complete cleanly. Some are engineering's to fix (a failed or stuck sync, bad data from the provider) — just flag the district to the engineering team. Others are yours (a course not synced, a group with no active paid combo, a missing co-teacher) — resolve those in the UI and re-sync.</li>
+        <li><strong>Synced courses</strong> — choose which of the district's courses sync in. This is the <strong>only filter</strong> on what comes in.</li>
+        <li><strong>Rostering problems</strong> — anything a sync couldn't complete cleanly with an explanation of the issue.</li>
         <li><strong>Sync history</strong> — each sync's time, trigger, and result.</li>
-        <li><strong>Change log</strong> — what each sync changed, record by record.</li>
+        <li><strong>Change log</strong> — what has changed on the district (schools, groups, faculty, students).</li>
       </ul>
       <figure class="shot-img">
         <img src="img-connections-tab.png" alt="A district's Connections tab — Connection panel with provider and status, Last sync summary counts, and Synced courses." loading="lazy">
@@ -293,13 +265,14 @@ flowchart LR
         <table>
           <thead><tr><th>Role</th><th>How many</th><th>How it's set</th><th>Overwritten by sync?</th></tr></thead>
           <tbody>
-            <tr><td>Primary teacher</td><td>One</td><td>From roster</td><td class="yes">Yes — roster-driven</td></tr>
-            <tr><td>Co-teacher</td><td>One</td><td>Bulk apply, or on group details</td><td class="no">No — not a roster role</td></tr>
-            <tr><td>Coach</td><td>Many</td><td>Bulk apply, or on group details</td><td class="no">No — not a roster role</td></tr>
+            <tr><td>Primary teacher</td><td>One</td><td>From Clever/ClassLink, or set it yourself (bulk apply / group details)</td><td class="yes">Yes — Clever/ClassLink wins when it defines one</td></tr>
+            <tr><td>Co-teacher</td><td>One</td><td>Bulk apply, or on group details</td><td class="no">No — not a Clever/ClassLink role</td></tr>
+            <tr><td>Coach</td><td>Many</td><td>Bulk apply, or on group details</td><td class="no">No — not a Clever/ClassLink role</td></tr>
           </tbody>
         </table>
       </div>
-      <p>Co-teacher and coach aren't roster roles, so a sync can't overwrite them — set them once and they stick. Assign either by <strong>bulk apply</strong> across groups, or directly on a single group's details.</p>
+      <p>Co-teacher and coach aren't Clever/ClassLink roles, so a sync can't overwrite them — set them once and they stick. Assign either by <strong>bulk apply</strong> across groups, or directly on a single group's details.</p>
+      <div class="note"><strong>Primary teacher fallback.</strong> Primary teacher comes in from <strong>Clever/ClassLink</strong>, and a sync overwrites that slot whenever the provider defines one. If <strong>Clever/ClassLink doesn't have a primary teacher</strong> for a group, you can set it yourself — by <strong>bulk apply</strong> or on the group's details — just like co-teacher and coach.</div>
       <figure class="shot-img">
         <img src="img-group-roles.png" alt="A group's Basic Information page with the Faculty section highlighted — Select Faculty, Primary Teacher, Co-Teacher, and Coach fields." loading="lazy">
         <figcaption>Group details — the Faculty section, with Primary teacher, Co-teacher, and Coach slots</figcaption>
@@ -314,7 +287,7 @@ flowchart LR
     <section id="part4">
       <p class="sec-eyebrow">Part 4</p>
       <h2>Group names &amp; finding the right group</h2>
-      <p><strong>Naming standard:</strong> group names are automatically prefixed with the <strong>primary teacher and co-teacher last names</strong> in parentheses, so you can tell who a group belongs to without opening it.</p>
+      <p><strong>Naming standard:</strong> group names are automatically prefixed with the <strong>primary teacher and co-teacher last names</strong> in parentheses, so you can tell who a group belongs to.</p>
       <div class="fmt">
         <div><span class="k">Format</span>&nbsp;&nbsp;(PrimaryLast/Co-teacherLast) Group name</div>
         <div><span class="k">Example</span>&nbsp;(Robin/Kazi) 5A Mandarin</div>
@@ -335,27 +308,27 @@ flowchart LR
     <section id="part5">
       <p class="sec-eyebrow">Part 5</p>
       <h2>Active vs. Inactive</h2>
-      <p>The <strong>active/inactive flag</strong> now decides whether a record counts — not whether it exists. Since everything comes in from rostering, flipping records is a core part of the job, and we've made it easy.</p>
+      <p><strong>Faculty arrive active; schools, groups, and students arrive Inactive.</strong> A student's status follows its group — activate a group and its students go active; deactivate it and they go inactive. So the core of rostering is <strong>activating the groups you need</strong>. The <strong>active/inactive flag</strong> decides whether a record counts, not whether it exists, and we've made flipping it easy.</p>
       <ul class="clean">
         <li>Works across <strong>all layers</strong>: district, school, group, faculty, student.</li>
-        <li><strong>Deactivating cascades down.</strong> Turn off a district and everything inside it — schools, groups, faculty, students — goes inactive too. Same for a school: its groups and people follow.</li>
         <li><strong>Status column</strong> — every layer's table has a <strong>Status</strong> column, so you can read each record's active/inactive state at a glance.</li>
         <li><strong>Filter by status</strong> — an <strong>All / Active / Inactive</strong> toggle on each layer lets you show everything or narrow to one; inactive isn't hidden.</li>
         <li><strong>Bulk apply</strong> active/inactive on any layer — select records, then <strong>Activate</strong> or <strong>Deactivate</strong>.</li>
-        <li><strong>This is how you curate:</strong> deactivate groups, faculty or students you shouldn't be using; the record stays for reference but stops counting.</li>
+        <li><strong>Deactivating cascades down — activating does not.</strong> Turn off a district and everything inside it — schools, groups, faculty, students — goes inactive too (same for a school: its groups and people follow). <strong>Activating never cascades</strong> down the hierarchy: you turn on the specific schools and groups you need, one by one or in bulk. (A group's own <strong>students</strong> do follow it — activate the group and they go active.)</li>
       </ul>
+      <div class="note"><strong>Deactivating is optional.</strong> Because <strong>groups come in Inactive</strong> and only go live once you activate them and add a combo, you don't have to clean anything out — anything you skip simply stays dark. Deactivating is a <strong>nice "tidy the house" step</strong>: deactivate groups, faculty, or students you'll never use so they stop showing up. It's never required.</div>
       <div class="rule"><b>Heads up:</b> because deactivation cascades, switching off a district or school takes everything beneath it with it. Deactivate at the layer you actually mean.</div>
       <figure class="shot-img">
         <img src="img-active-inactive.png" alt="A school's Groups table with a Status column showing each group's Active state, an All / Active / Inactive filter above the table, and the Group Action Center's Activate and Deactivate bulk controls." loading="lazy">
         <figcaption>A layer's table — a Status column per row, an All / Active / Inactive filter, and bulk Activate / Deactivate in the Action Center</figcaption>
       </figure>
-      <h3>Year rollover</h3>
+      <h2>Year rollover</h2>
       <p>At the <strong>start of each new school year</strong> this happens <strong>automatically</strong> — you don't run it. CS gets an <strong>email reminder two weeks before</strong>.</p>
       <ul class="clean">
+        <li>Last year's groups are retired: a group with <strong>no students and no product combos</strong> is <strong>deleted</strong>; every other group is set to <strong>Inactive</strong>.</li>
         <li>The <strong>new roster comes in</strong> and creates the new year's groups, associating the relevant students and faculty.</li>
-        <li>Last year's groups are retired: a group with <strong>no students and no product combos</strong> is <strong>deleted</strong>; every other group is set to <strong>Inactive</strong>, keeping its combo and roster for historical reporting and renewals.</li>
       </ul>
-      <p>Net effect: the old group goes inactive and the new one comes to life. From there, treat the new groups exactly like Part 1 — confirm them, add the paid product combo, set Active.</p>
+      <p>Net effect: the old group goes inactive and the new one comes to life. From there, treat the new groups exactly like Part 1 — activate the ones you need, then add the product combo. You can also filter on the inactive records: even if more groups came in than you need, that's fine, and the unused ones get cleaned up automatically.</p>
     </section>
 
     <!-- PART 6 -->
@@ -381,13 +354,13 @@ flowchart LR
         <img src="img-edit-district.png" alt="The Edit District dialog — district name, a slug used in URLs and IDs, and an Active toggle, with a Save Changes button." loading="lazy">
         <figcaption>The Edit District form — update the name or slug, or toggle Active</figcaption>
       </figure>
+      <h2>How admin access works</h2>
+      <p>You no longer add an admin to each group one by one. Granting someone <strong>district admin</strong> or <strong>school admin</strong> access automatically gives them full access to the district or school — they can see <strong>every group and all the data</strong> in that district or school.</p>
+      <p>This also happens on its own from rostering: faculty brought in through <strong>Clever or ClassLink</strong> who are <strong>marked as an admin</strong> automatically get access at their expected layer (school or district) — no manual step needed.</p>
       <figure class="shot-img">
         <img src="img-assign-admin.png" alt="A school's Faculty tab with the Faculty Action Center open — the Admin Roles section highlighted with Make District Admin, Remove District Admin, Make School Admin, and Remove School Admin actions applied to the selected faculty." loading="lazy">
         <figcaption>Select faculty, then use the Faculty Action Center's Admin Roles actions to grant or remove district / school admin access</figcaption>
       </figure>
-      <h3>How admin access works</h3>
-      <p>You no longer add an admin to each group one by one. Granting someone <strong>district admin</strong> or <strong>school admin</strong> access automatically gives them the whole layer — they can see <strong>every group and all the data</strong> in that district or school.</p>
-      <p>This also happens on its own from rostering: faculty brought in through <strong>Clever or ClassLink</strong> who are <strong>marked as an admin</strong> automatically get access at their expected layer (school or district) — no manual step needed.</p>
     </section>
 
     <!-- PART 7 -->
@@ -408,15 +381,50 @@ flowchart LR
       </figure>
     </section>
 
+    <!-- REFERENCE — flow at a glance -->
+    <section id="flow-reference">
+      <p class="sec-eyebrow">Reference</p>
+      <h2>The rostering flow at a glance</h2>
+      <div class="diagram">
+        <pre class="mermaid">
+flowchart TD
+    A["Rostering tab<br/>(all districts)"] --> B["Link or create<br/>the district"]
+    B --> C{"Connections tab:<br/>pick which courses sync"}
+    C -->|Selected| D["Schools, groups, students arrive<br/>INACTIVE — faculty active"]
+    C -->|Not selected| X["Never enters our system"]
+    D --> E["Activate the schools<br/>and groups you need"]
+    E --> F["Add product combo<br/>to the active group"]
+    F --> G["Students go live"]
+
+    classDef gate fill:#fdedc7,stroke:#b45309,color:#7a3c08;
+    classDef sync fill:#e0e9ff,stroke:#1d4ed8,color:#163a9e;
+    classDef on fill:#d7f3ee,stroke:#0f766e,color:#0b5249;
+    class C sync;
+    class E on;
+    class F gate;
+
+    click A mmJump
+    click B mmJump
+    click C mmJump
+    click D mmJump
+    click E mmJump
+    click F mmJump
+    click G mmJump
+    click X mmJump
+        </pre>
+      </div>
+      <p class="hint">Tip — click any step in the chart to jump to the part that explains it.</p>
+    </section>
+
     <!-- GLOSSARY -->
     <section id="glossary">
       <p class="sec-eyebrow">Reference</p>
       <h2>Words you'll see</h2>
       <div class="glossary">
         <dl>
-          <dt>Roster</dt><dd>The list of districts, schools, teachers, and students that the customer's system sends us.</dd>
-          <dt>Sync</dt><dd>When that roster data is pulled into our system and refreshed.</dd>
-          <dt>Clever / ClassLink</dt><dd>The services districts use to send us their roster.</dd>
+          <dt>Clever / ClassLink</dt><dd>The services districts use to send us their roster — the list of schools, teachers, students, and groups.</dd>
+          <dt>Sync</dt><dd>When that Clever/ClassLink data is pulled into our system and refreshed.</dd>
+          <dt>Synced courses</dt><dd>The courses you choose to bring in. This is the only filter on what enters our system.</dd>
           <dt>Product combo</dt><dd>The bundle of products a school paid for — for example, "Avanza Reading with Phonics."</dd>
           <dt>Active / Inactive</dt><dd>Whether a record counts in the product right now. Inactive stays visible for history but doesn't count.</dd>
           <dt>Layer</dt><dd>A level in the account — district, school, group, or student.</dd>
@@ -432,7 +440,7 @@ flowchart LR
 <script>
   // Each workflow-chart node maps to the section that explains it.
   window.mmJump = function (nodeId) {
-    var map = { A:'part2', B:'part2', C:'part1', D:'part3', E:'part1', F:'part1', X:'part2', G:'part5' };
+    var map = { A:'part1', B:'part1', C:'part1', D:'part1', E:'part1', F:'part1', G:'part1', X:'part1' };
     var el = document.getElementById(map[nodeId]);
     if (el) el.scrollIntoView({ behavior:'smooth', block:'start' });
   };
