@@ -53,6 +53,14 @@
   h1{font-family:"Space Grotesk",sans-serif;font-size:34px;line-height:1.15;font-weight:700;margin:0 0 10px;letter-spacing:-.01em;}
   .lede{color:var(--muted);font-size:15px;margin:0 0 22px;max-width:60ch;}
 
+  /* Intro — "what changed" */
+  .intro{background:linear-gradient(180deg,#f3faf8,#ffffff);border:1px solid #bfe9e1;border-left:4px solid var(--brand);border-radius:12px;padding:18px 22px;margin:0 0 22px;}
+  .intro .h{font-family:"Space Grotesk",sans-serif;font-weight:700;color:#0b5249;margin:0 0 8px;font-size:15px;letter-spacing:.01em;}
+  .intro p{margin:0 0 10px;font-size:14.5px;color:#33414f;}
+  .intro-list{margin:0;padding-left:22px;}
+  .intro-list li{margin:7px 0;font-size:14.5px;color:#33414f;}
+  .intro-list li::marker{color:var(--brand);}
+
   /* Legend */
   .legend{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 6px;padding:14px 16px;background:#f7f9fb;border:1px solid var(--line);border-radius:12px;}
   .chip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;}
@@ -153,6 +161,23 @@
     <p class="eyebrow">Customer Success · Internal Guide</p>
     <h1>Rostering &amp; Account Setup</h1>
     <p class="lede">How rostering works in the new system — and the exact steps to bring a district online.</p>
+
+    <!-- INTRO — what changed -->
+    <div class="intro" id="intro">
+      <p class="h">We heard you.</p>
+      <p>We're streamlining rostering to make it as simple as possible:</p>
+      <ul class="intro-list">
+        <li>The old rostering UI is gone — it now lives in <strong>Settings</strong>, where everything starts.</li>
+        <li>Creating a district takes a <strong>single click</strong>: new districts are built from a template, so they arrive with a default school year, benchmarks, and usage goals already defined.</li>
+        <li>From there, the only manual steps are <strong>choosing which courses to import</strong> from Clever/ClassLink, then <strong>activating the groups you need</strong> and adding their products.</li>
+        <li>The homeroom/co-teacher problem is solved with a <strong>new teacher role you manage by hand</strong>, outside the automatic sync — so a roster sync can never overwrite it.</li>
+        <li>&ldquo;Linking&rdquo; is gone: we now <strong>import all schools by default</strong>, along with every group that matches the courses you select.</li>
+        <li>You no longer add an admin to every group. <strong>Assigning district or school admin grants the expected permissions automatically</strong> — and people coming from Clever/ClassLink with admin roles get the right permissions on their own.</li>
+        <li>Actions that used to require <strong>Django</strong> — creating or editing districts and schools, or making someone an admin — are now <strong>built into the UI</strong>, so you never have to leave the app.</li>
+        <li>The <strong>rostering email is gone</strong>, replaced by visibility right in the district's <strong>Connections</strong> tab: when the district was last synced, what changed, and what problems were encountered, if any.</li>
+        <li>When a new school year begins, last year's groups are automatically set to inactive (empty ones are removed) and fresh groups come in with the new roster.</li>
+      </ul>
+    </div>
 
     <!-- OVERVIEW — the steps, up top -->
     <div class="moves" id="overview">
@@ -312,7 +337,7 @@ flowchart LR
     <section id="part5">
       <p class="sec-eyebrow">Part 5</p>
       <h2>Active vs. Inactive</h2>
-      <p><strong>Faculty arrive active; schools, groups, and students arrive Inactive.</strong> A student's status follows its group — activate a group and its students go active; deactivate it and they go inactive. So the core of rostering is <strong>activating the groups you need</strong>. The <strong>active/inactive flag</strong> decides whether a record counts, not whether it exists, and we've made flipping it easy.</p>
+      <p>A student's status follows its group — activate a group and its students go active; deactivate it and they go inactive. So the core of rostering is <strong>activating the groups you need</strong>. The <strong>active/inactive flag</strong> decides whether a record counts, not whether it exists, and we've made flipping it easy.</p>
       <ul class="clean">
         <li>Works across <strong>all layers</strong>: district, school, group, faculty, student.</li>
         <li><strong>Status column</strong> — every layer's table has a <strong>Status</strong> column, so you can read each record's active/inactive state at a glance.</li>
