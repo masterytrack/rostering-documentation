@@ -320,8 +320,8 @@ flowchart LR
         <li><strong>Bulk apply</strong> active/inactive on any layer — select records, then <strong>Activate</strong> or <strong>Deactivate</strong>.</li>
         <li><strong>Deactivating cascades down — activating does not.</strong> Turn off a district and everything inside it — schools, groups, faculty, students — goes inactive too (same for a school: its groups and people follow). <strong>Activating never cascades</strong> down the hierarchy: you turn on the specific schools and groups you need, one by one or in bulk. (A group's own <strong>students</strong> do follow it — activate the group and they go active.)</li>
       </ul>
-      <div class="note"><strong>Deactivating is optional.</strong> Because <strong>groups come in Inactive</strong> and only go live once you activate them and add a combo, you don't have to clean anything out — anything you skip simply stays dark. Deactivating is a <strong>nice "tidy the house" step</strong>: deactivate groups, faculty, or students you'll never use so they stop showing up. It's never required.</div>
-      <div class="rule"><b>Heads up:</b> because deactivation cascades, switching off a district or school takes everything beneath it with it. Deactivate at the layer you actually mean.</div>
+      <div class="note"><strong>Deactivating is optional.</strong> Because <strong>groups come in Inactive</strong> and only go live once you activate them and add a combo, you don't have to clean anything up. Deactivating is a <strong>nice "tidy the house" step</strong>: deactivate groups, faculty, or students you'll never use so they stop showing up. It's never required.</div>
+      <div class="rule"><b>Heads up:</b> because deactivation cascades, switching off a district or school takes everything beneath it with it.</div>
       <figure class="shot-img">
         <img src="img-active-inactive.png" alt="A school's Groups table with a Status column showing each group's Active state, an All / Active / Inactive filter above the table, and the Group Action Center's Activate and Deactivate bulk controls." loading="lazy">
         <figcaption>A layer's table — a Status column per row, an All / Active / Inactive filter, and bulk Activate / Deactivate in the Action Center</figcaption>
@@ -394,8 +394,8 @@ flowchart LR
 flowchart TD
     A["Rostering tab<br/>(all districts)"] --> B["Link or create<br/>the district"]
     B --> C{"Connections tab:<br/>pick which courses sync"}
-    C -->|Selected| D["Schools, groups, students arrive<br/>INACTIVE — faculty active"]
-    C -->|Not selected| X["Never enters our system"]
+    C --> D["Groups matching selected courses<br/>are imported (inactive)"]
+    C --> X["Groups that don't match the selected<br/>courses are not imported at all"]
     D --> E["Activate the schools<br/>and groups you need"]
     E --> F["Add product combo<br/>to the active group"]
     F --> G["Students go live"]
